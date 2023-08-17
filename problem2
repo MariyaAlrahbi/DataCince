@@ -1,0 +1,22 @@
+def find_two_numbers_with_sum(arr, target_sum):
+    num_to_index = {}
+    
+    for index, num in enumerate(arr):
+        complement = target_sum - num
+        if complement in num_to_index:
+            return num, complement
+        num_to_index[num] = index
+        
+    return None, None
+
+input_array = input("Enter the array of numbers (space-separated): ")
+target = int(input("Enter the target sum: "))
+
+numbers = [int(x) for x in input_array.split()]
+
+num1, num2 = find_two_numbers_with_sum(numbers, target)
+
+if num1 is not None and num2 is not None:
+    print(f"The two numbers are: {num1} and {num2}")
+else:
+    print("No such pair of numbers found.")
